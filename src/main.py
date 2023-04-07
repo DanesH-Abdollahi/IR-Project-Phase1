@@ -31,7 +31,6 @@ stopwords.extend(
     ]
 )
 
-
 for id in data:
     tmp_tokens = []
     tokens_dict[id] = normalizer.normalize(data[id]["content"])  # normalize text
@@ -44,10 +43,4 @@ for id in data:
     for i in range(len(tmp_tokens)):
         tmp_tokens[i] = lemmetizer.lemmatize(tmp_tokens[i])  # lemmatize tokens
 
-    tokens_dict[id] = tmp_tokens
-
-
-# for i in tokens_dict["0"]:
-#     print(i)
-
-print(data["0"]["content"])
+    tokens_dict[id] = tmp_tokens  # update tokens_dict with lemmatized tokens list
