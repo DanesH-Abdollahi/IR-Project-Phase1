@@ -28,6 +28,22 @@ stopwords.extend(
         "؟",
         "-",
         "/",
+        '"',
+        "'",
+        "*",
+        "!!",
+        "!؟",
+        "''",
+        '""',
+        '》',
+        '《',
+        "**",
+        '*',
+        '**',
+        '***',
+        '****',
+        '********',
+
     ]
 )
 
@@ -55,21 +71,20 @@ for id in tokens_dict:
     for token in enumerate(tokens_dict[id]):
         if token[1] not in inverted_index:
             inverted_index[token[1]] = dict()
-            inverted_index[token[1]]["total_num"] = 1
+            inverted_index[token[1]]["total_frequency"] = 1
             inverted_index[token[1]][id] = dict()
-            # inverted_index[token[1]][id] = dict()
             inverted_index[token[1]][id]["frequency"] = 1
-            inverted_index[token[1]][id]["position"] = [token[0]]
+            inverted_index[token[1]][id]["positions"] = [token[0]]
 
         else:
-            inverted_index[token[1]]["total_num"] += 1
+            inverted_index[token[1]]["total_frequency"] += 1
             if id not in inverted_index[token[1]]:
                 inverted_index[token[1]][id] = dict()
                 inverted_index[token[1]][id]["frequency"] = 1
-                inverted_index[token[1]][id]["position"] = [token[0]]
+                inverted_index[token[1]][id]["positions"] = [token[0]]
             else:
                 inverted_index[token[1]][id]["frequency"] += 1
-                inverted_index[token[1]][id]["position"].append(token[0])
+                inverted_index[token[1]][id]["positions"].append(token[0])
 
 # Sort inverted index by token
 sorted_inverted_index = dict(
