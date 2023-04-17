@@ -28,6 +28,22 @@ stopwords.extend(
         "؟",
         "-",
         "/",
+        '"',
+        "'",
+        "*",
+        "!!",
+        "!؟",
+        "''",
+        '""',
+        '》',
+        '《',
+        "**",
+        '*',
+        '**',
+        '***',
+        '****',
+        '********',
+
     ]
 )
 
@@ -57,7 +73,6 @@ for id in tokens_dict:
             inverted_index[token[1]] = dict()
             inverted_index[token[1]]["total_num"] = 1
             inverted_index[token[1]][id] = dict()
-            # inverted_index[token[1]][id] = dict()
             inverted_index[token[1]][id]["frequency"] = 1
             inverted_index[token[1]][id]["position"] = [token[0]]
 
