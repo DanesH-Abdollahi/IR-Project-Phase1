@@ -5,7 +5,7 @@ from hazm.utils import stopwords_list
 with open("../IR_data_news_12k.json", "r") as file:
     data = json.load(file)
 
-normalizer = Normalizer(token_based=True)
+normalizer = Normalizer()
 tokenizer = WordTokenizer()
 lemmetizer = Lemmatizer()
 tokens_dict = dict()
