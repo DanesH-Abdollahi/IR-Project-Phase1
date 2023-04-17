@@ -130,6 +130,7 @@ dmypy.json
 
 #
 .vscode/
-test.ipynb
+#test.ipynb
 desktop.ini
 IR_data_news_12k.json
+Report.txt
