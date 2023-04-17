@@ -52,24 +52,25 @@ for id in data:
 inverted_index = dict()
 
 for id in tokens_dict:
-    for token in tokens_dict[id]:
-        if token not in inverted_index:
-            inverted_index[token] = dict()
-            # inverted_index[token]["total_num"] = len(tokens_dict[id])
-            inverted_index[token]["total_num"] = 1
-            inverted_index[token]["PL"] = dict()
+    for token in enumerate(tokens_dict[id]):
+        if token[1] not in inverted_index:
+            inverted_index[token[1]] = dict()
+            inverted_index[token[1]]["total_num"] = 1
+            inverted_index[token[1]][id] = dict()
+            # inverted_index[token[1]][id] = dict()
+            inverted_index[token[1]][id]["frequency"] = 1
+            inverted_index[token[1]][id]["position"] = [token[0]]
 
-            if id not in inverted_index[token]["PL"]:
-                inverted_index[token]["PL"][id] = 1
-            else:
-                inverted_index[token]["PL"][id] += 1
         else:
-
-            inverted_index[token]["total_num"] += 1
-            if id not in inverted_index[token]["PL"]:
-                inverted_index[token]["PL"][id] = 1
+            inverted_index[token[1]]["total_num"] += 1
+            if id not in inverted_index[token[1]]:
+                inverted_index[token[1]][id] = dict()
+                inverted_index[token[1]][id]["frequency"] = 1
+                inverted_index[token[1]][id]["position"] = [token[0]]
             else:
-                inverted_index[token]["PL"][id] += 1
+                inverted_index[token[1]][id]["frequency"] += 1
+                inverted_index[token[1]][id]["position"].append(token[0])
 
 # Sort inverted index by token
-new_dict = dict(sorted(inverted_index.items(), key=lambda item: item[0]))
+sorted_inverted_index = dict(
+    sorted(inverted_index.items(), key=lambda item: item[0]))
