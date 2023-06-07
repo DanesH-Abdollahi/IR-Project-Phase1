@@ -1,4 +1,4 @@
-# Boolean Retreived 
+# Boolean Retreival
 
 This Python script implements an information retrieval system using the Hazm library. The system performs tokenization, normalization, lemmatization, and query processing on a dataset of news articles.
 
